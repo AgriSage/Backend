@@ -1,0 +1,6 @@
+@AgriSage.API_HostAddress = http://localhost:5013
+
+GET {{AgriSage.API_HostAddress}}/weatherforecast/
+Accept: application/json
+
+###
