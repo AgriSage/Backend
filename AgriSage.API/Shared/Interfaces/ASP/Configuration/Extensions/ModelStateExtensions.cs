@@ -1,5 +1,5 @@
-﻿namespace AgriSage.API.Shared.Interfaces.ASP.Configuration.Extensions;
-using Microsoft.AspNetCore.Mvc.ModelBinding;
+﻿using Microsoft.AspNetCore.Mvc.ModelBinding;
+namespace AgriSage.API.Shared.Interfaces.ASP.Configuration.Extensions;
 
 public static class ModelStateExtensions
 {

@@ -1,5 +1,6 @@
-﻿namespace AgriSage.API.Shared.Interfaces.ASP.Configuration.Extensions;
-using System.Text.RegularExpressions;
+﻿using System.Text.RegularExpressions;
+
+namespace AgriSage.API.Shared.Interfaces.ASP.Configuration.Extensions;
 
 public static partial class StringExtensions
 {

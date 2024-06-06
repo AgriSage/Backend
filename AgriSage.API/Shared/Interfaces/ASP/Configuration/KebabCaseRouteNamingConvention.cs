@@ -1,6 +1,7 @@
 ﻿using AgriSage.API.Shared.Interfaces.ASP.Configuration.Extensions;
-namespace AgriSage.API.Shared.Interfaces.ASP.Configuration;
 using Microsoft.AspNetCore.Mvc.ApplicationModels;
+
+namespace AgriSage.API.Shared.Interfaces.ASP.Configuration;
 
 public class KebabCaseRouteNamingConvention : IControllerModelConvention
 {
