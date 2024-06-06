@@ -1,7 +1,7 @@
 ﻿using AgriSage.API.IAM.Domain.Model.Aggregates;
-using AgriSage.API.IAM.IAM.Domain.Repositories;
-using AgriSage.API.IAM.Shared.Infrastructure.Persistence.EFC.Configuration;
-using AgriSage.API.IAM.Shared.Infrastructure.Persistence.EFC.Repositories;
+using AgriSage.API.IAM.Domain.Repositories;
+using AgriSage.API.Shared.Infrastructure.Persistence.EFC.Configuration;
+using AgriSage.API.Shared.Infrastructure.Persistence.EFC.Repositories;
 using Microsoft.EntityFrameworkCore;
 
 namespace AgriSage.API.IAM.Infrastructure.Persistence.EFC.Repositories;
