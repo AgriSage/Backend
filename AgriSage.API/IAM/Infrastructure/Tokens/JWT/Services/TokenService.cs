@@ -13,8 +13,7 @@ namespace AgriSage.API.IAM.Infrastructure.Tokens.JWT.Services;
 public class TokenService(IOptions<TokenSettings> tokenSettings) : ITokenService
 {
     private readonly TokenSettings _tokenSettings = tokenSettings.Value;
-
-
+    
     public string GenerateToken(User user)
     {
         var secret = _tokenSettings.Secret;
@@ -35,7 +34,7 @@ public class TokenService(IOptions<TokenSettings> tokenSettings) : ITokenService
         var token = tokenHandler.CreateToken(tokenDescriptor);
         return token;
     }
-
+    
     public async Task<int?> ValidateToken(string token)
     {
         if (string.IsNullOrEmpty(token))
@@ -51,6 +50,7 @@ public class TokenService(IOptions<TokenSettings> tokenSettings) : ITokenService
                 IssuerSigningKey = new SymmetricSecurityKey(key),
                 ValidateIssuer = false,
                 ValidateAudience = false,
+                // Expiration without delay
                 ClockSkew = TimeSpan.Zero
             });
 
