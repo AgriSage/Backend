@@ -1,20 +1,13 @@
 using AgriSage.API.Shared.Interfaces.ASP.Configuration;
-<<<<<<< Updated upstream
+
 using AgriSage.API.Shared.Infrastructure.Persistence.EFC.Configuration;
-=======
 using AgriSage.API.Payments.Domain.Services;
 using AgriSage.API.Payments.Application.Internal.CommandServices;
 using AgriSage.API.Payments.Application.Internal.QueryServices;
 using AgriSage.API.Payments.Infrastructure.Persistence.EFC.Repositories;
 using AgriSage.API.Payments.Domain.Repositories;
->>>>>>> Stashed changes
 using Microsoft.EntityFrameworkCore;
 using Microsoft.OpenApi.Models;
-using AgriSage.API.Payments.Application.Internal.CommandServices;
-using AgriSage.API.Payments.Application.Internal.QueryServices;
-using AgriSage.API.Payments.Domain.Repositories;
-using AgriSage.API.Payments.Infrastructure.Persistence.EFC.Repositories;
-using AgriSage.API.Payments.Domain.Services;
 using AgriSage.API.Shared.Domain.Repositories;
 using AgriSage.API.Shared.Infrastructure.Persistence.EFC.Repositories;
 
@@ -39,9 +32,7 @@ builder.Services.AddScoped<IPaymentCommandService, PaymentCommandService>();
 builder.Services.AddScoped<IPaymentQueryService, PaymentQueryService>();
 builder.Services.AddScoped<IPaymentRepository, PaymentRepository>();
 builder.Services.AddScoped<IUnitOfWork, UnitOfWork>();
-builder.Services.AddScoped<IPaymentCommandService, PaymentCommandService>();
-builder.Services.AddScoped<IPaymentQueryService, PaymentQueryService>();
-builder.Services.AddScoped<IPaymentRepository, PaymentRepository>();
+
 
 var app = builder.Build();
 
