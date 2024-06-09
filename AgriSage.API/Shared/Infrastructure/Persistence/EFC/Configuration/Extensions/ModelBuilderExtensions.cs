@@ -1,6 +1,7 @@
-﻿using Microsoft.EntityFrameworkCore;
+using Microsoft.EntityFrameworkCore;
 
 namespace AgriSage.API.Shared.Infrastructure.Persistence.EFC.Configuration.Extensions;
+
 public static class ModelBuilderExtensions
 {
     public static void UseSnakeCaseWithPluralizedTableNamingConvention(this ModelBuilder builder)

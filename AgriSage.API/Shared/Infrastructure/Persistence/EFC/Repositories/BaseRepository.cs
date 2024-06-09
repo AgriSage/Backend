@@ -1,6 +1,6 @@
-﻿using Microsoft.EntityFrameworkCore;
 using AgriSage.API.Shared.Infrastructure.Persistence.EFC.Configuration;
 using AgriSage.API.Shared.Domain.Repositories;
+using Microsoft.EntityFrameworkCore;
 
 namespace AgriSage.API.Shared.Infrastructure.Persistence.EFC.Repositories;
 

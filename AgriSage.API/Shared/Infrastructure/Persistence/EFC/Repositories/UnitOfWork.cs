@@ -1,4 +1,4 @@
-﻿using AgriSage.API.Shared.Domain.Repositories;
+using AgriSage.API.Shared.Domain.Repositories;
 using AgriSage.API.Shared.Infrastructure.Persistence.EFC.Configuration;
 
 namespace AgriSage.API.Shared.Infrastructure.Persistence.EFC.Repositories;
