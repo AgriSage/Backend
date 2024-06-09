@@ -15,10 +15,15 @@ using AgriSage.API.Shared.Interfaces.ASP.Configuration;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.OpenApi.Models;
 
+using AgriSage.API.Payments.Domain.Services;
+using AgriSage.API.Payments.Application.Internal.CommandServices;
+using AgriSage.API.Payments.Application.Internal.QueryServices;
+using AgriSage.API.Payments.Infrastructure.Persistence.EFC.Repositories;
+using AgriSage.API.Payments.Domain.Repositories;
+
 var builder = WebApplication.CreateBuilder(args);
 
 // Add services to the container.
-
 builder.Services.AddControllers(options => options.Conventions.Add(new KebabCaseRouteNamingConvention()));
 
 // Add Database Connection
@@ -104,8 +109,10 @@ builder.Services.AddScoped<IUserCommandService, UserCommandService>();
 builder.Services.AddScoped<IUserQueryService, UserQueryService>();
 builder.Services.AddScoped<ITokenService, TokenService>();
 builder.Services.AddScoped<IHashingService, HashingService>();
-
-
+// Register application services
+builder.Services.AddScoped<IPaymentCommandService, PaymentCommandService>();
+builder.Services.AddScoped<IPaymentQueryService, PaymentQueryService>();
+builder.Services.AddScoped<IPaymentRepository, PaymentRepository>();
 var app = builder.Build();
 
 // Verify Database Objects are created

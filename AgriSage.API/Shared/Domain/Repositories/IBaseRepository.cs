@@ -1,4 +1,4 @@
-﻿namespace AgriSage.API.Shared.Domain.Repositories;
+namespace AgriSage.API.Shared.Domain.Repositories;
 
 public interface IBaseRepository<TEntity>
 {

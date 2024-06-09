@@ -1,6 +1,7 @@
-﻿using Humanizer;
+using Humanizer;
 
 namespace AgriSage.API.Shared.Infrastructure.Persistence.EFC.Configuration.Extensions;
+
 public static class StringExtensions
 {
     public static string ToSnakeCase(this string text)
