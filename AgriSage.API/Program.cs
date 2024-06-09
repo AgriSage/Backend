@@ -113,9 +113,6 @@ builder.Services.AddScoped<IHashingService, HashingService>();
 builder.Services.AddScoped<IPaymentCommandService, PaymentCommandService>();
 builder.Services.AddScoped<IPaymentQueryService, PaymentQueryService>();
 builder.Services.AddScoped<IPaymentRepository, PaymentRepository>();
-builder.Services.AddScoped<IUnitOfWork, UnitOfWork>();
-
-
 var app = builder.Build();
 
 // Verify Database Objects are created

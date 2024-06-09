@@ -1,6 +1,6 @@
 using AgriSage.API.IAM.Domain.Model.Aggregates;
-using AgriSage.API.Shared.Infrastructure.Persistence.EFC.Configuration.Extensions;
 using AgriSage.API.Payments.Domain.Model.Aggregates;
+using AgriSage.API.Shared.Infrastructure.Persistence.EFC.Configuration.Extensions;
 using EntityFrameworkCore.CreatedUpdatedDate.Extensions;
 using Microsoft.EntityFrameworkCore;
 
@@ -17,28 +17,27 @@ public class AppDbContext(DbContextOptions options) : DbContext(options)
     {
         base.OnModelCreating(builder);
         // Payments Context Configuration
-
         builder.Entity<Payment>().HasKey(p => p.Id);
         builder.Entity<Payment>().Property(p => p.Id).IsRequired().ValueGeneratedOnAdd();
 
         builder.Entity<Payment>().OwnsOne(p => p.Cardnumber,
             cn =>
             {
-                cn.WithOwner().HasForeignKey("PaymentId");
+                cn.WithOwner().HasForeignKey("id");
                 cn.Property(p => p.Value).HasColumnName("CardNumber").IsRequired().HasMaxLength(16);
             });
 
         builder.Entity<Payment>().OwnsOne(p => p.Cardverification,
             cv =>
             {
-                cv.WithOwner().HasForeignKey("PaymentId");
+                cv.WithOwner().HasForeignKey("id");
                 cv.Property(p => p.Value).HasColumnName("CVV").IsRequired().HasMaxLength(3);
             });
 
         builder.Entity<Payment>().OwnsOne(p => p.Expirydate,
             ed =>
             {
-                ed.WithOwner().HasForeignKey("PaymentId");
+                ed.WithOwner().HasForeignKey("id");
                 ed.Property(p => p.Value).HasColumnName("ExpiryDate").IsRequired();
             });
         
