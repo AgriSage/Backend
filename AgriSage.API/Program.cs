@@ -8,18 +8,17 @@ using AgriSage.API.IAM.Infrastructure.Persistence.EFC.Repositories;
 using AgriSage.API.IAM.Infrastructure.Pipeline.Middleware.Extensions;
 using AgriSage.API.IAM.Infrastructure.Tokens.JWT.Configuration;
 using AgriSage.API.IAM.Infrastructure.Tokens.JWT.Services;
+using AgriSage.API.Payments.Application.Internal.CommandServices;
+using AgriSage.API.Payments.Application.Internal.QueryServices;
+using AgriSage.API.Payments.Domain.Repositories;
+using AgriSage.API.Payments.Domain.Services;
+using AgriSage.API.Payments.Infrastructure.Persistence.EFC.Repositories;
 using AgriSage.API.Shared.Domain.Repositories;
 using AgriSage.API.Shared.Infrastructure.Persistence.EFC.Configuration;
 using AgriSage.API.Shared.Infrastructure.Persistence.EFC.Repositories;
 using AgriSage.API.Shared.Interfaces.ASP.Configuration;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.OpenApi.Models;
-
-using AgriSage.API.Payments.Domain.Services;
-using AgriSage.API.Payments.Application.Internal.CommandServices;
-using AgriSage.API.Payments.Application.Internal.QueryServices;
-using AgriSage.API.Payments.Infrastructure.Persistence.EFC.Repositories;
-using AgriSage.API.Payments.Domain.Repositories;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -124,11 +123,9 @@ using (var scope = app.Services.CreateScope())
 }
 
 // Configure the HTTP request pipeline.
-if (app.Environment.IsDevelopment())
-{
-    app.UseSwagger();
-    app.UseSwaggerUI();
-}
+app.UseSwagger();
+app.UseSwaggerUI();
+
 
 // Add Authorization Middleware to Pipeline
 app.UseRequestAuthorization();
