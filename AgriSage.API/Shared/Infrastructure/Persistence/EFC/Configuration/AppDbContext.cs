@@ -1,27 +1,21 @@
-using AgriSage.API.Payments.Domain.Model.Aggregates;
+using AgriSage.API.IAM.Domain.Model.Aggregates;
 using AgriSage.API.Shared.Infrastructure.Persistence.EFC.Configuration.Extensions;
+using AgriSage.API.Payments.Domain.Model.Aggregates;
 using EntityFrameworkCore.CreatedUpdatedDate.Extensions;
 using Microsoft.EntityFrameworkCore;
 
 namespace AgriSage.API.Shared.Infrastructure.Persistence.EFC.Configuration;
-
-public class AppDbContext : DbContext
+public class AppDbContext(DbContextOptions options) : DbContext(options)
 {
-    public AppDbContext(DbContextOptions<AppDbContext> options) : base(options) { }
-
-    public DbSet<Payments.Domain.Model.Aggregates.Payment> Payments { get; set; }
-
     protected override void OnConfiguring(DbContextOptionsBuilder builder)
     {
         base.OnConfiguring(builder);
-        // Enable Audit Fields Interceptors
         builder.AddCreatedUpdatedInterceptor();
     }
 
     protected override void OnModelCreating(ModelBuilder builder)
     {
         base.OnModelCreating(builder);
-
         // Payments Context Configuration
 
         builder.Entity<Payment>().HasKey(p => p.Id);
@@ -47,8 +41,13 @@ public class AppDbContext : DbContext
                 ed.WithOwner().HasForeignKey("PaymentId");
                 ed.Property(p => p.Value).HasColumnName("ExpiryDate").IsRequired();
             });
-
-        // Apply SnakeCase Naming Convention
+        
+        // IAM Context
+        builder.Entity<User>().HasKey(u => u.Id);
+        builder.Entity<User>().Property(u => u.Id).IsRequired().ValueGeneratedOnAdd();
+        builder.Entity<User>().Property(u => u.Username).IsRequired();
+        builder.Entity<User>().Property(u => u.PasswordHash).IsRequired();
+        
         builder.UseSnakeCaseWithPluralizedTableNamingConvention();
     }
 }
