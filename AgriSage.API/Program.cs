@@ -51,14 +51,13 @@ builder.Services.AddSwaggerGen(
         c.SwaggerDoc("v1",
             new OpenApiInfo
             {
-                Title = "ACME.LearningCenterPlatform.API",
+                Title = "AgriSage.API",
                 Version = "v1",
-                Description = "ACME Learning Center Platform API",
-                TermsOfService = new Uri("https://acme-learning.com/tos"),
+                Description = "AgriSage Backend",
                 Contact = new OpenApiContact
                 {
-                    Name = "ACME Studios",
-                    Email = "contact@acme.com"
+                    Name = "AgriSage dev",
+                    Email = "contact@agrisage.com"
                 },
                 License = new OpenApiLicense
                 {
