@@ -8,6 +8,8 @@ using AgriSage.API.IAM.Infrastructure.Persistence.EFC.Repositories;
 using AgriSage.API.IAM.Infrastructure.Pipeline.Middleware.Extensions;
 using AgriSage.API.IAM.Infrastructure.Tokens.JWT.Configuration;
 using AgriSage.API.IAM.Infrastructure.Tokens.JWT.Services;
+using AgriSage.API.IAM.Interfaces.ACL;
+using AgriSage.API.IAM.Interfaces.ACL.Services;
 using AgriSage.API.Payments.Application.Internal.CommandServices;
 using AgriSage.API.Payments.Application.Internal.QueryServices;
 using AgriSage.API.Payments.Domain.Repositories;
@@ -107,6 +109,7 @@ builder.Services.AddScoped<IUserCommandService, UserCommandService>();
 builder.Services.AddScoped<IUserQueryService, UserQueryService>();
 builder.Services.AddScoped<ITokenService, TokenService>();
 builder.Services.AddScoped<IHashingService, HashingService>();
+builder.Services.AddScoped<IIamContextFacade, IamContextFacade>();
 // Register application services
 builder.Services.AddScoped<IPaymentCommandService, PaymentCommandService>();
 builder.Services.AddScoped<IPaymentQueryService, PaymentQueryService>();
