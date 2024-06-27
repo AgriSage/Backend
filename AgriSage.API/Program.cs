@@ -19,6 +19,11 @@ using AgriSage.API.Shared.Domain.Repositories;
 using AgriSage.API.Shared.Infrastructure.Persistence.EFC.Configuration;
 using AgriSage.API.Shared.Infrastructure.Persistence.EFC.Repositories;
 using AgriSage.API.Shared.Interfaces.ASP.Configuration;
+using AgriSage.API.Shops.Application.Internal.CommandServices;
+using AgriSage.API.Shops.Application.Internal.QueryServices;
+using AgriSage.API.Shops.Domain.Repositories;
+using AgriSage.API.Shops.Domain.Services;
+using AgriSage.API.Shops.Infrastructure.Persistence.EFC.Repositories;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.OpenApi.Models;
 
@@ -125,6 +130,10 @@ builder.Services.AddScoped<IIamContextFacade, IamContextFacade>();
 builder.Services.AddScoped<IPaymentCommandService, PaymentCommandService>();
 builder.Services.AddScoped<IPaymentQueryService, PaymentQueryService>();
 builder.Services.AddScoped<IPaymentRepository, PaymentRepository>();
+
+builder.Services.AddScoped<IShopCommandService, ShopCommandService>();
+builder.Services.AddScoped<IShopQueryService, ShopQueryService>();
+builder.Services.AddScoped<IShopRepository, ShopRepository>();
 var app = builder.Build();
 
 // Verify Database Objects are created
