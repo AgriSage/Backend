@@ -31,7 +31,7 @@ builder.Services.AddControllers(options => options.Conventions.Add(new KebabCase
 var connectionString = builder.Configuration.GetConnectionString("DefaultConnection");
 
 builder.Services.AddDbContext<AppDbContext>(
-        options =>
+        options => 
         {
             if (connectionString != null)
                 if (builder.Environment.IsDevelopment())
@@ -39,10 +39,12 @@ builder.Services.AddDbContext<AppDbContext>(
                         .LogTo(Console.WriteLine, LogLevel.Information)
                         .EnableSensitiveDataLogging()
                         .EnableDetailedErrors();
-                else if (builder.Environment.IsProduction())
+                else if (builder.Environment.IsProduction()) {
+                    Console.WriteLine("Connection String: " + connectionString);
                     options.UseMySQL(connectionString)
                         .LogTo(Console.WriteLine, LogLevel.Error)
                         .EnableDetailedErrors();
+                }
         });
 
 // Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
@@ -93,6 +95,15 @@ builder.Services.AddSwaggerGen(
         });
     });
 
+// Add CORS Policy
+builder.Services.AddCors(options =>
+{
+    options.AddPolicy("AllowAllPolicy",
+        policy => policy.AllowAnyOrigin()
+            .AllowAnyMethod()
+            .AllowAnyHeader());
+});
+
 // Configure Lowercase URLs
 builder.Services.AddRouting(options => options.LowercaseUrls = true);
 
@@ -128,6 +139,7 @@ using (var scope = app.Services.CreateScope())
 app.UseSwagger();
 app.UseSwaggerUI();
 
+app.UseCors("AllowAllPolicy");
 
 // Add Authorization Middleware to Pipeline
 app.UseRequestAuthorization();
